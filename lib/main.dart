@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:bitbuddy/HomeScreen/home.dart';
-import 'package:bitbuddy/splash_screen.dart';
 import 'package:bitbuddy/utils/routers.dart';
 import 'package:bitbuddy/utils/root.dart';
 
@@ -12,7 +11,7 @@ var routes = <String, WidgetBuilder>{
 };
 
 void main() async {
-  List currency = (await getCryptoCurrency()) as List;
+  List currency = await getCryptoCurrency();
   print(currency);
   runApp(new Bitbuddy(currency));
 }
@@ -30,9 +29,9 @@ class Bitbuddy extends StatelessWidget {
   }
 }
 
-Future<Map> getCryptoCurrency() async {
+Future<List> getCryptoCurrency() async {
   String coinMarketCapAPI = "https://api.coinmarketcap.com/v2/ticker/?start=101&limit=10&sort=id&structure=array";
   http.Response response = await http.get(coinMarketCapAPI);
-  Map currencyMap = json.decode(response.body);
-  return currencyMap;
+
+  return json.decode(response.body)['data'];
 }

@@ -11,12 +11,16 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  //null object error triggered here
   List currency;
 
   @override
   Widget build(BuildContext context) {
+    print(widget.currency);
     return new Scaffold(
-      appBar: new AppBar(title: new Text("Bitbuddy")),
+      appBar: new AppBar(title: new Text("Bitbuddy"),
+      centerTitle: true,
+      ),
       body: _cryptoHolder(),
     );
   }
@@ -27,19 +31,19 @@ class _HomeState extends State<Home> {
       children: <Widget>[
         new Flexible(
             child: new ListView.builder(
-          itemCount: widget.currency.length,
+          itemCount: 5,
           padding: const EdgeInsets.all(5.0),
           itemBuilder: (BuildContext context, int index) {
             final Map currencyMap = widget.currency[index];
 
-            return _buildListItem(currencyMap);
+            return _buildListItem(context, currencyMap);
           },
         )),
       ],
     ));
   }
 
-  Widget _buildListItem(Map currencyList) {
+  Widget _buildListItem(BuildContext context, Map currencyList) {
     return new Container(
       child: new Card(
         child: new Column(
@@ -47,7 +51,7 @@ class _HomeState extends State<Home> {
           children: <Widget>[
             new ListTile(
               leading: new CircleAvatar(
-                child: new Text(currencyList['symbol'][0]),
+                child: new Text(currencyList['name'][0]),
               ),
               title: new Text(currencyList['name'],
                   style: new TextStyle(fontWeight: FontWeight.bold)),
