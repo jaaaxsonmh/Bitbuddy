@@ -20,7 +20,8 @@ class _HomeState extends State<Home> {
     print(widget.currency.length);
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Bitbuddy"),
+        title: new Text("Bitbuddy",
+        style: new TextStyle(color:  Color.fromRGBO(115, 222, 255, 1.0)),),
         centerTitle: true,
       ),
       body: _cryptoHolder(),
@@ -46,10 +47,6 @@ class _HomeState extends State<Home> {
   }
 
   Widget _buildListItem(BuildContext context, Map currencyList) {
-
-    int rank = currencyList['rank'];
-    double supply = currencyList['total_supply'] - currencyList['circulating_supply'];
-
     return new Container(
       child: new Card(
         child: new Column(
@@ -57,37 +54,44 @@ class _HomeState extends State<Home> {
           children: <Widget>[
             new ListTile(
                 leading: new CircleAvatar(
-                  child: new Text(currencyList['name'][0]),
+                  radius: 30.0,
+                  child: new Text(currencyList['symbol']),
                 ),
                 title: new Text(currencyList['name'],
-                    style: new TextStyle(fontWeight: FontWeight.bold)),
-                subtitle: new Text("Rank: $rank \nCoins not in circulation: $supply")
+                    style: new TextStyle(fontWeight: FontWeight.bold, color:  Color.fromRGBO(115, 222, 255, 1.0), fontSize: 24.0)),
+                subtitle:
 
-                /*_getPriceToSubtitle(
-                  currencyList['rank'], currencyList['total_supply']),
+
+
+
+
+
+
+               /* _getPriceToSubtitle(
+                  currencyList['quotes']['USD']['price'], currencyList['quotes']['USD']['percent_change_1h']),
               isThreeLine: true,
-              */
-                )
+                )*/
           ],
         ),
       ),
     );
   }
 
-  Widget _getPriceToSubtitle(int price, int change) {
+  Widget _getPriceToSubtitle(double price, double change) {
+    String priceFormated = price.toStringAsFixed(2);
     TextSpan priceWidget = new TextSpan(
-        text: "Rank: price\n",
-        style: new TextStyle(color: Color.fromRGBO(115, 222, 255, 1.0)));
-    String changeWidget = "total supply: $change";
+        text: "\$$priceFormated",
+        style: new TextStyle(color: Colors.black, fontSize: 18.0));
+    String changeWidget = "Percentage Change: $change%";
     TextSpan changeTextWidget;
 
-    /* if (double.parse(change) >= 0) {
+     if (change >= 0) {
       changeTextWidget = new TextSpan(
           text: changeWidget, style: new TextStyle(color: Colors.green));
     } else {
       changeTextWidget = new TextSpan(
           text: changeWidget, style: new TextStyle(color: Colors.red));
-    }*/
+    }
 
     return new RichText(
         text: new TextSpan(children: [priceWidget, changeTextWidget]));
