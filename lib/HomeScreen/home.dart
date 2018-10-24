@@ -27,10 +27,10 @@ class _HomeState extends State<Home> {
       children: <Widget>[
         new Flexible(
             child: new ListView.builder(
-          itemCount: currency.length,
+          itemCount: widget.currency.length,
           padding: const EdgeInsets.all(5.0),
           itemBuilder: (BuildContext context, int index) {
-            final Map currencyMap = currency[index];
+            final Map currencyMap = widget.currency[index];
 
             return _buildListItem(currencyMap);
           },
