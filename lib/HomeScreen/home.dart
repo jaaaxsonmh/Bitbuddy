@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
     ));
   }
 
-  Widget _buildListItem(Map currencyMap) {
+  Widget _buildListItem(Map currencyList) {
     return new Container(
       child: new Card(
         child: new Column(
@@ -47,12 +47,12 @@ class _HomeState extends State<Home> {
           children: <Widget>[
             new ListTile(
               leading: new CircleAvatar(
-                child: new Text(currencyMap['name'][0]),
+                child: new Text(currencyList['symbol'][0]),
               ),
-              title: new Text(currencyMap['name'],
+              title: new Text(currencyList['name'],
                   style: new TextStyle(fontWeight: FontWeight.bold)),
               subtitle: _getPriceToSubtitle(
-                  currencyMap['price_usd'], currencyMap['percent_change_1h']),
+                  currencyList['price_usd'], currencyList['percent_change_1h']),
               isThreeLine: true,
             )
           ],

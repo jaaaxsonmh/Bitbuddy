@@ -12,7 +12,7 @@ var routes = <String, WidgetBuilder>{
 };
 
 void main() async {
-  List currency = await getCryptoCurrency();
+  List currency = (await getCryptoCurrency()) as List;
   print(currency);
   runApp(new Bitbuddy(currency));
 }
@@ -30,8 +30,9 @@ class Bitbuddy extends StatelessWidget {
   }
 }
 
-Future<List> getCryptoCurrency() async {
-  String coinMarketCapAPI = "https://api.coinmarketcap.com/v2/ticker/?limit=10";
+Future<Map> getCryptoCurrency() async {
+  String coinMarketCapAPI = "https://api.coinmarketcap.com/v2/ticker/?start=101&limit=10&sort=id&structure=array";
   http.Response response = await http.get(coinMarketCapAPI);
-  return json.decode(response.body);
+  Map currencyMap = json.decode(response.body);
+  return currencyMap;
 }
