@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bitbuddy/main.dart';
+import 'package:bitbuddy/widgets/fancyfab.dart';
 
 class Home extends StatefulWidget {
   Home({this.currency});
@@ -23,8 +24,10 @@ class _HomeState extends State<Home> {
         title: new Text("Bitbuddy",
         style: new TextStyle(color:  Color.fromRGBO(115, 222, 255, 1.0)),),
         centerTitle: true,
+
       ),
       body: _cryptoHolder(),
+      floatingActionButton: FancyFab(),
     );
   }
 
@@ -55,22 +58,17 @@ class _HomeState extends State<Home> {
             new ListTile(
                 leading: new CircleAvatar(
                   radius: 30.0,
-                  child: new Text(currencyList['symbol']),
+                  backgroundColor: Color.fromRGBO(115, 222, 255, 1.0),
+                  child: new Text(currencyList['symbol'], style: new TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, fontSize: 18.0),),
                 ),
                 title: new Text(currencyList['name'],
-                    style: new TextStyle(fontWeight: FontWeight.bold, color:  Color.fromRGBO(115, 222, 255, 1.0), fontSize: 24.0)),
+                    style: new TextStyle(color:  Colors.black, fontSize: 24.0)),
                 subtitle:
-
-
-
-
-
-
-
-               /* _getPriceToSubtitle(
+                _getPriceToSubtitle(
                   currencyList['quotes']['USD']['price'], currencyList['quotes']['USD']['percent_change_1h']),
-              isThreeLine: true,
-                )*/
+              isThreeLine: false,
+              trailing: new Text(currencyList['symbol'], style: new TextStyle(fontWeight: FontWeight.bold, color:  Color.fromRGBO(115, 222, 255, 1.0), fontSize: 24.0),),
+                )
           ],
         ),
       ),
@@ -82,15 +80,15 @@ class _HomeState extends State<Home> {
     TextSpan priceWidget = new TextSpan(
         text: "\$$priceFormated",
         style: new TextStyle(color: Colors.black, fontSize: 18.0));
-    String changeWidget = "Percentage Change: $change%";
+    String changeWidget = " $change%";
     TextSpan changeTextWidget;
 
      if (change >= 0) {
       changeTextWidget = new TextSpan(
-          text: changeWidget, style: new TextStyle(color: Colors.green));
+          text: changeWidget, style: new TextStyle(color: Colors.green, fontSize: 18.0));
     } else {
       changeTextWidget = new TextSpan(
-          text: changeWidget, style: new TextStyle(color: Colors.red));
+          text: changeWidget, style: new TextStyle(color: Colors.red, fontSize: 18.0));
     }
 
     return new RichText(
