@@ -1,6 +1,6 @@
 
 <p align="center"> 
-<img src="https://github.com/jaaaxsonmh/trees_company/raw/master/images/bitbuddylogo.png">
+<img src="https://github.com/jaaaxsonmh/Bitbuddy/blob/master/images/bitbuddylogo.jpg?raw=true">
 </p>
 
 Bitbuddy is a cryptocurrency coin tracking application
