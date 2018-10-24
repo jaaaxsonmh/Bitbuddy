@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:bitbuddy/main.dart';
 
 class Home extends StatefulWidget {
+  Home({this.currency});
+
+  final List currency;
+
   @override
   _HomeState createState() => _HomeState();
 }
@@ -19,16 +23,20 @@ class _HomeState extends State<Home> {
 
   Widget _cryptoHolder() {
     return new Container(
-        child: new Flexible(
+        child: new Column(
+      children: <Widget>[
+        new Flexible(
             child: new ListView.builder(
-      itemCount: currency.length,
-      padding: const EdgeInsets.all(5.0),
-      itemBuilder: (BuildContext context, int index) {
-        final Map currencyMap = currency[index];
+          itemCount: currency.length,
+          padding: const EdgeInsets.all(5.0),
+          itemBuilder: (BuildContext context, int index) {
+            final Map currencyMap = currency[index];
 
-        return _buildListItem(currencyMap);
-      },
-    )));
+            return _buildListItem(currencyMap);
+          },
+        )),
+      ],
+    ));
   }
 
   Widget _buildListItem(Map currencyMap) {

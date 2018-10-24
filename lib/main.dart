@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:bitbuddy/HomeScreen/home.dart';
 import 'package:bitbuddy/splash_screen.dart';
 import 'package:bitbuddy/utils/routers.dart';
+import 'package:bitbuddy/utils/root.dart';
 
 var routes = <String, WidgetBuilder>{
   Routers.home: (BuildContext context) => Home(),
@@ -24,7 +25,7 @@ class Bitbuddy extends StatelessWidget {
     return new MaterialApp(
         theme: ThemeData(primaryColor: Colors.white),
         title: 'Bitbuddy',
-        home: new SplashScreen(),
+        home: new Root(_currency),
         routes: routes);
   }
 }
