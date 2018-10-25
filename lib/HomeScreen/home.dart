@@ -20,6 +20,7 @@ class _HomeState extends State<Home> {
 
     print(widget.currency);
     print(widget.currency.length);
+
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Bitbuddy",
