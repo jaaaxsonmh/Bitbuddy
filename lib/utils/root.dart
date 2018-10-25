@@ -1,19 +1,36 @@
-
 import 'package:flutter/material.dart';
 import 'package:bitbuddy/HomeScreen/home.dart';
+import 'package:bitbuddy/splash_screen.dart';
 
 class Root extends StatefulWidget {
-
   Root(this.currency);
+
   final List currency;
+
   @override
   State<StatefulWidget> createState() => new _RootState();
 }
 
-class _RootState extends State<Root>{
+enum RootStatus { splash, home }
+
+class _RootState extends State<Root> {
+  RootStatus _rootStatus = RootStatus.splash;
+  RootStatus _afterSplash = RootStatus.home;
+  RootStatus _afterIntro = RootStatus.home;
+
+  void _afterSplashState(){
+    setState(() {
+      _rootStatus = _afterSplash;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return new Home(currency: widget.currency);
+    switch (_rootStatus) {
+      case RootStatus.home:
+        return new Home(currency: widget.currency);
+      case RootStatus.splash:
+        return new SplashScreen(onSplashOver: _afterSplashState);
+    }
   }
 }

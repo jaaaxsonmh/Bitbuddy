@@ -24,7 +24,11 @@ class SplashScreenState extends State<SplashScreen>
         parent: _iconAnimationController, curve: Curves.bounceIn);
     _iconAnimation.addListener(() => this.setState(() {}));
     _iconAnimationController.forward();
-    Timer(Duration(milliseconds: 5000), () => MyNavigator.goToHome(context));
+    Timer(Duration(milliseconds: 5000), () => openNextPage());
+  }
+
+  openNextPage() {
+    widget.onSplashOver();
   }
 
   @override
@@ -43,7 +47,7 @@ class SplashScreenState extends State<SplashScreen>
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           new Image(
-                            image: new AssetImage("assets/bitbuddylogo.jpg"),
+                            image: new AssetImage("images/bitbuddylogo.jpg"),
                             height: _iconAnimation.value * 300,
                             width: _iconAnimation.value * 300,
                           )

@@ -17,16 +17,13 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-
-    print(widget.currency);
-    print(widget.currency.length);
-
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Bitbuddy",
-        style: new TextStyle(color:  Color.fromRGBO(115, 222, 255, 1.0)),),
+        leading: Image.asset("images/bitbuddylogo.jpg"),
+        backgroundColor: Color.fromRGBO(115, 222, 255, 1.0),
+        title: new Text("Bit Buddy",
+        style: new TextStyle(color:  Colors.white, fontSize: 28.0)),
         centerTitle: true,
-
       ),
       body: _cryptoHolder(),
       floatingActionButton: FancyFab(),
