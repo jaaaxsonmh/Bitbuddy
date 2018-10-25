@@ -18,6 +18,7 @@ class _FancyFabState extends State<FancyFab>
   Animation<Color> _buttonColor;
   Animation<double> _animateIcon;
   Animation<double> _translateButton;
+  Color _buttonColorOpened = Color.fromRGBO(115, 222, 255, 1.0);
   Curve _curve = Curves.easeOut;
   double _fabHeight = 56.0;
 
@@ -31,7 +32,7 @@ class _FancyFabState extends State<FancyFab>
     _animateIcon =
         Tween<double>(begin: 0.0, end: 1.0).animate(_animationController);
     _buttonColor = ColorTween(
-      begin: Colors.blue,
+      begin: Color.fromRGBO(115, 222, 255, 1.0),
       end: Colors.red,
     ).animate(CurvedAnimation(
       parent: _animationController,
@@ -73,6 +74,7 @@ class _FancyFabState extends State<FancyFab>
   Widget add() {
     return Container(
       child: FloatingActionButton(
+        backgroundColor: _buttonColorOpened,
         onPressed: null,
         tooltip: 'Add',
         child: Icon(Icons.add),
@@ -83,6 +85,7 @@ class _FancyFabState extends State<FancyFab>
   Widget image() {
     return Container(
       child: FloatingActionButton(
+        backgroundColor: _buttonColorOpened,
         onPressed: null,
         tooltip: 'Image',
         child: Icon(Icons.wb_incandescent),
@@ -93,6 +96,7 @@ class _FancyFabState extends State<FancyFab>
   Widget inbox() {
     return Container(
       child: FloatingActionButton(
+        backgroundColor: _buttonColorOpened,
         onPressed: null,
         tooltip: 'Inbox',
         child: Icon(Icons.ac_unit),
