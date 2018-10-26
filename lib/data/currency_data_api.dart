@@ -4,7 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:bitbuddy/data/crypto_data.dart';
 
 class CryptoDataProducer implements CryptoStore {
-  String coinMarketCapAPI = "https://api.coinmarketcap.com/v2/ticker/?limit=50&structure=array";
+  String coinMarketCapAPI =
+      "https://api.coinmarketcap.com/v2/ticker/?limit=50";
 
   @override
   Future<List<CryptoData>> getCryptoCurrency() async {
@@ -12,12 +13,10 @@ class CryptoDataProducer implements CryptoStore {
 
     final List responseBody = json.decode(response.body)['data'];
     final httpStatusCode = response.statusCode;
-
-    if(httpStatusCode != 200 || httpStatusCode == null) {
-      throw new GetDataException(
-        "Error Status Code: $httpStatusCode"
-      );
+    print(responseBody);
+    if (httpStatusCode != 200 || httpStatusCode == null) {
+      throw new GetDataException("Error Status Code: $httpStatusCode");
     }
-      return responseBody.map((c) => new CryptoData.fromMap(c)).toList();
+    return responseBody.map((c) => new CryptoData.fromMap(c)).toList();
   }
 }

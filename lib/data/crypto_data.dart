@@ -8,7 +8,13 @@ class CryptoData {
   String percent_change_12h;
   String percent_change_24h;
 
-  CryptoData({this.name, this.price, this.symbol});
+  CryptoData(
+      {this.name,
+      this.price,
+      this.symbol,
+      this.percent_change_1h,
+      this.percent_change_12h,
+      this.percent_change_24h});
 
   CryptoData.fromMap(Map<String, dynamic> map)
       : name = map['name'],

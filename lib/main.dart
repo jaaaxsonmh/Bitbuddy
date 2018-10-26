@@ -1,8 +1,6 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:bitbuddy/view/currency_list_view.dart';
 import 'package:bitbuddy/utils/routers.dart';
-import 'package:bitbuddy/utils/root.dart';
 import 'package:bitbuddy/crypto_injector.dart';
 
 var routes = <String, WidgetBuilder>{
@@ -20,7 +18,7 @@ class Bitbuddy extends StatelessWidget {
     return new MaterialApp(
         theme: ThemeData(primaryColor: Colors.white),
         title: 'Bitbuddy',
-        home: new Root(),
+        home: new Home(),
         routes: routes);
   }
 }
