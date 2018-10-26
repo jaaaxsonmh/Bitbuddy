@@ -3,10 +3,10 @@ import 'dart:async';
 class CryptoData {
   String name;
   String symbol;
-  String price;
-  String percent_change_1h;
-  String percent_change_12h;
-  String percent_change_24h;
+  double price;
+  double percent_change_1h;
+  double percent_change_12h;
+  double percent_change_24h;
 
   CryptoData(
       {this.name,
@@ -35,10 +35,7 @@ class GetDataException implements Exception {
   GetDataException([this._exception]);
 
   String toString() {
-    if (_exception == null) {
-      return "Unknown";
-    } else {
+    if (_exception == null) return "Unknown";
       return " Exception $_exception";
-    }
   }
 }

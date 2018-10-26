@@ -25,6 +25,20 @@ class _HomeState extends State<Home> implements CryptoCurrencyListViewContract {
   }
 
   @override
+  void onLoadCryptoComplete(List<CryptoData> items) {
+    setState(() {
+      _currency = items;
+      _isLoading = false;
+      print(_currency.length);
+    });
+  }
+
+  @override
+  void onLoadCryptoError() {
+    // TODO: implement onLoadCryptoError
+  }
+
+  @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
@@ -79,7 +93,7 @@ class _HomeState extends State<Home> implements CryptoCurrencyListViewContract {
               title: new Text(currencyList.name,
                   style: new TextStyle(color: Colors.black, fontSize: 24.0)),
               subtitle: _getPriceToSubtitle(
-                  currencyList.price as double, currencyList.percent_change_1h),
+                  currencyList.price, currencyList.percent_change_1h),
               isThreeLine: false,
               trailing: new Text(
                 currencyList.symbol,
@@ -95,7 +109,7 @@ class _HomeState extends State<Home> implements CryptoCurrencyListViewContract {
     );
   }
 
-  Widget _getPriceToSubtitle(double price, String change) {
+  Widget _getPriceToSubtitle(double price, double change) {
     String priceFormated = price.toStringAsFixed(2);
     TextSpan priceWidget = new TextSpan(
         text: "\$$priceFormated",
@@ -103,7 +117,7 @@ class _HomeState extends State<Home> implements CryptoCurrencyListViewContract {
     String changeWidget = " $change%";
     TextSpan changeTextWidget;
 
-    if (double.parse(change) >= 0) {
+    if ((change) >= 0) {
       changeTextWidget = new TextSpan(
           text: changeWidget,
           style: new TextStyle(color: Colors.green, fontSize: 18.0));
@@ -117,17 +131,5 @@ class _HomeState extends State<Home> implements CryptoCurrencyListViewContract {
         text: new TextSpan(children: [priceWidget, changeTextWidget]));
   }
 
-  @override
-  void onLoadCryptoComplete(List<CryptoData> items) {
-    setState(() {
-      _currency = items;
-      _isLoading = false;
-      print(_currency.length);
-    });
-  }
 
-  @override
-  void onLoadCryptoError() {
-    // TODO: implement onLoadCryptoError
-  }
 }
