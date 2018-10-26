@@ -5,7 +5,7 @@ import 'package:bitbuddy/crypto_injector.dart';
 import 'package:bitbuddy/utils/root.dart';
 
 var routes = <String, WidgetBuilder>{
-  Routers.home: (BuildContext context) => Home(),
+  Routers.home: (BuildContext context) => CurrencyListView(),
 };
 
 void main() async {

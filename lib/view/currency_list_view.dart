@@ -3,17 +3,18 @@ import 'package:bitbuddy/widgets/fancyfab.dart';
 import 'package:bitbuddy/data/crypto_data.dart';
 import 'package:bitbuddy/modules/crypto_currency_presenter.dart';
 
-class Home extends StatefulWidget {
+class CurrencyListView extends StatefulWidget {
   @override
-  _HomeState createState() => new _HomeState();
+  _CurrencyListViewState createState() => new _CurrencyListViewState();
 }
 
-class _HomeState extends State<Home> implements CryptoCurrencyListViewContract {
+class _CurrencyListViewState extends State<CurrencyListView>
+    implements CryptoCurrencyListViewContract {
   CryptoCurrencyListPresenter _presenter;
   List<CryptoData> _currency;
   bool _isLoading;
 
-  _HomeState() {
+  _CurrencyListViewState() {
     _presenter = new CryptoCurrencyListPresenter(this);
   }
 
@@ -41,19 +42,11 @@ class _HomeState extends State<Home> implements CryptoCurrencyListViewContract {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        leading: Image.asset("images/bitbuddylogo.jpg"),
-        backgroundColor: Color.fromRGBO(115, 222, 255, 1.0),
-        title: new Text("Bit Buddy",
-            style: new TextStyle(color: Colors.white, fontSize: 28.0)),
-        centerTitle: true,
-      ),
       body: _isLoading
           ? new Center(
               child: new CircularProgressIndicator(),
             )
           : _cryptoHolder(),
-      floatingActionButton: FancyFab(),
     );
   }
 
@@ -130,6 +123,4 @@ class _HomeState extends State<Home> implements CryptoCurrencyListViewContract {
     return new RichText(
         text: new TextSpan(children: [priceWidget, changeTextWidget]));
   }
-
-
 }
