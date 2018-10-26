@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:bitbuddy/HomeScreen/home.dart';
+import 'package:bitbuddy/view/currency_list_view.dart';
 import 'package:bitbuddy/utils/routers.dart';
 import 'package:bitbuddy/utils/root.dart';
 

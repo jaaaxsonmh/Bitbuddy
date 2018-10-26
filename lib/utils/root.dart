@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bitbuddy/HomeScreen/home.dart';
+import 'package:bitbuddy/view/currency_list_view.dart';
 import 'package:bitbuddy/splash_screen.dart';
 
 class Root extends StatefulWidget {
