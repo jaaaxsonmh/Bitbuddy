@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:bitbuddy/main.dart';
 import 'package:bitbuddy/widgets/fancyfab.dart';
+import 'package:bitbuddy/data/crypto_data.dart';
+import 'package:bitbuddy/modules/crypto_currency_presenter.dart';
 
 class Home extends StatefulWidget {
-  Home({this.currency});
-
-  final List currency;
 
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  //null object error triggered here
-  List currency;
+
 
   @override
   Widget build(BuildContext context) {

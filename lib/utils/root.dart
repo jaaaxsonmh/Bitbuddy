@@ -3,9 +3,7 @@ import 'package:bitbuddy/view/currency_list_view.dart';
 import 'package:bitbuddy/splash_screen.dart';
 
 class Root extends StatefulWidget {
-  Root(this.currency);
 
-  final List currency;
 
   @override
   State<StatefulWidget> createState() => new _RootState();
@@ -28,7 +26,7 @@ class _RootState extends State<Root> {
   Widget build(BuildContext context) {
     switch (_rootStatus) {
       case RootStatus.home:
-        return new Home(currency: widget.currency);
+        return new Home();
       case RootStatus.splash:
         return new SplashScreen(onSplashOver: _afterSplashState);
     }
