@@ -77,18 +77,18 @@ class _FancyFabState extends State<FancyFab>
         backgroundColor: _buttonColorOpened,
         onPressed: null,
         tooltip: 'Add',
-        child: Icon(Icons.add),
+        child: Icon(Icons.rate_review),
       ),
     );
   }
 
-  Widget image() {
+  Widget news() {
     return Container(
       child: FloatingActionButton(
         backgroundColor: _buttonColorOpened,
         onPressed: null,
-        tooltip: 'Image',
-        child: Icon(Icons.wb_incandescent),
+        tooltip: 'News',
+        child: Icon(Icons.collections),
       ),
     );
   }
@@ -137,7 +137,7 @@ class _FancyFabState extends State<FancyFab>
             _translateButton.value * 2.0,
             0.0,
           ),
-          child: image(),
+          child: news(),
         ),
         Transform(
           transform: Matrix4.translationValues(

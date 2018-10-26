@@ -29,9 +29,4 @@ class Bitbuddy extends StatelessWidget {
   }
 }
 
-Future<List> getCryptoCurrency() async {
-  String coinMarketCapAPI = "https://api.coinmarketcap.com/v2/ticker/?limit=50&structure=array";
-  http.Response response = await http.get(coinMarketCapAPI);
 
-  return json.decode(response.body)['data'];
-}
