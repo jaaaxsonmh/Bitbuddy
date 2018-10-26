@@ -12,6 +12,10 @@ class CryptoData {
 
   CryptoData.fromMap(Map<String, dynamic> map)
       : name = map['name'],
+        price = map['quotes']['USD']['price'],
+        percent_change_1h = map['quotes']['USD']['percent_change_1h'],
+        percent_change_12h = map['quotes']['USD']['percent_change_12h'],
+        percent_change_24h = map['quotes']['USD']['percent_change_24h'],
         symbol = map['symbol'];
 }
 

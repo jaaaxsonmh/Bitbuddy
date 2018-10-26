@@ -3,6 +3,7 @@ import 'package:bitbuddy/crypto_injector.dart';
 
 abstract class CryptoCurrencyListViewContract {
   void onLoadCryptoComplete(List<CryptoData> items);
+
   void onLoadCryptoError();
 }
 
@@ -15,5 +16,9 @@ class CryptoCurrencyListPresenter {
   }
 
   void loadCurrency() {
+    _store
+        .getCryptoCurrency()
+        .then((c) => _view.onLoadCryptoComplete(c))
+        .catchError((onError) => _view.onLoadCryptoError());
   }
 }
