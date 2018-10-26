@@ -15,7 +15,7 @@ class CryptoData {
         symbol = map['symbol'];
 }
 
-abstract class CryptoDataList {
+abstract class CryptoStore {
   Future<List<CryptoData>> getCryptoCurrency();
 }
 
