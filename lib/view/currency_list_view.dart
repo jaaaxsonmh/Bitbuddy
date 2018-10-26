@@ -93,7 +93,7 @@ class _HomeState extends State<Home> implements CryptoCurrencyListViewContract {
               title: new Text(currencyList.name,
                   style: new TextStyle(color: Colors.black, fontSize: 24.0)),
               subtitle: _getPriceToSubtitle(
-                  currencyList.price, currencyList.percent_change_1h),
+                  currencyList.price, currencyList.percentChange1h),
               isThreeLine: false,
               trailing: new Text(
                 currencyList.symbol,
