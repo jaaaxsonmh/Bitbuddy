@@ -154,7 +154,7 @@ class _NewsListViewState extends State<NewsListView>
                                   horizontal: 5.0),
                               child: new Icon(Icons.share, color: Color.fromRGBO(115, 222, 255, 1.0),)),
                           onTap: () {
-                            Share.share(newsList.url);
+                            Share.share("Check out the latest news on Cryptocurrency! \n\nSent from Bit Buddy \n " + newsList.url);
                           },
                         ),
                       ],
