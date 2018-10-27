@@ -17,6 +17,6 @@ class CryptoDataProducer implements CryptoStore {
     if (httpStatusCode != 200 || httpStatusCode == null) {
       throw new GetDataException("Error Status Code: $httpStatusCode");
     }
-    return responseBody.map((c) => new CryptoData.fromMap(c)).toList();
+    return responseBody.map((crypto) => new CryptoData.fromMap(crypto)).toList();
   }
 }
