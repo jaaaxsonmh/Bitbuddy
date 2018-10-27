@@ -12,7 +12,7 @@ class CryptoCurrencyListPresenter {
   CryptoStore _store;
 
   CryptoCurrencyListPresenter(this._view) {
-    _store = new Injector().cryptoCurrencyStore;
+    _store = new CryptoInjector().cryptoCurrencyStore;
   }
 
   void loadCurrency() {

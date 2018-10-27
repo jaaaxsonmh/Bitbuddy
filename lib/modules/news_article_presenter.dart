@@ -11,7 +11,7 @@ class NewsArticleListPresenter {
   NewsStore _store;
 
   NewsArticleListPresenter(this._view) {
-    _store = new Injector().newsArticleStore;
+    _store = new NewsInjector().newsArticleStore;
   }
 
   void loadCurrency() {

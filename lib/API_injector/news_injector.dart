@@ -2,21 +2,21 @@ import 'package:bitbuddy/data/news_data.dart';
 import 'package:bitbuddy/data/news_data_api.dart';
 
 
-enum Flavour { API }
+enum NewsFlavour { API }
 
-class Injector {
-  static final Injector _singleton = new Injector._internal();
-  static Flavour _flavour;
+class NewsInjector {
+  static final NewsInjector _singleton = new NewsInjector._internal();
+  static NewsFlavour _flavour;
 
-  static void configure(Flavour flavour){
+  static void configure(NewsFlavour flavour){
     _flavour = flavour;
   }
 
-  factory Injector() {
+  factory NewsInjector() {
     return _singleton;
   }
 
-  Injector._internal();
+  NewsInjector._internal();
 
   NewsStore get newsArticleStore {
     return new NewsDataAPI();
