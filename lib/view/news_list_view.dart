@@ -53,8 +53,8 @@ class _NewsListViewState extends State<NewsListView>
       ),
       body: _isLoading
           ? new Center(
-        child: new CircularProgressIndicator(),
-      )
+              child: new CircularProgressIndicator(),
+            )
           : _newsHolder(),
     );
   }
@@ -62,19 +62,19 @@ class _NewsListViewState extends State<NewsListView>
   Widget _newsHolder() {
     return new Container(
         child: new Column(
-          children: <Widget>[
-            new Flexible(
-                child: new ListView.builder(
-                  itemCount: _news.length,
-                  padding: const EdgeInsets.all(5.0),
-                  itemBuilder: (BuildContext context, int index) {
-                    final NewsData news = _news[index];
+      children: <Widget>[
+        new Flexible(
+            child: new ListView.builder(
+          itemCount: _news.length,
+          padding: const EdgeInsets.all(5.0),
+          itemBuilder: (BuildContext context, int index) {
+            final NewsData news = _news[index];
 
-                    return _buildListItem(news);
-                  },
-                )),
-          ],
-        ));
+            return _buildListItem(news);
+          },
+        )),
+      ],
+    ));
   }
 
   Widget _buildListItem(NewsData newsList) {
@@ -116,9 +116,7 @@ class _NewsListViewState extends State<NewsListView>
                         ),
                         new Padding(
                           padding: new EdgeInsets.only(
-                              left: 4.0,
-                              right: 4.0,
-                              bottom: 4.0),
+                              left: 4.0, right: 8.0, bottom: 4.0),
                           child: new Text(
                             newsList.description,
                             style: new TextStyle(
@@ -136,38 +134,39 @@ class _NewsListViewState extends State<NewsListView>
                 new Column(
                   children: <Widget>[
                     new Padding(
-                      padding:
-                      new EdgeInsets.only(top: 8.0),
+                      padding: new EdgeInsets.only(top: 8.0),
                       child: new SizedBox(
-                        height: 100.0,
-                        width: 100.0,
-                        child: _getImageFromURL(newsList.urlToImage)
-                      ),
+                          height: 100.0,
+                          width: 100.0,
+                          child: _getImageFromURL(newsList.urlToImage)),
                     ),
                     new Row(
                       children: <Widget>[
                         new GestureDetector(
                           child: new Padding(
-                              padding:
-                              new EdgeInsets.symmetric(
-                                  vertical: 10.0,
-                                  horizontal: 5.0),
-                              child: new Icon(Icons.share, color: Color.fromRGBO(115, 222, 255, 1.0),)),
+                              padding: new EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 5.0),
+                              child: new Icon(
+                                Icons.share,
+                                color: Color.fromRGBO(115, 222, 255, 1.0),
+                              )),
                           onTap: () {
                             //TODO: input published link.
-                            Share.share("Check out the latest news on Cryptocurrency! \n\nSent from Bit Buddy \n " + newsList.url);
+                            Share.share(
+                                "Check out the latest news on Cryptocurrency! \n\nSent from Bit Buddy \n " +
+                                    newsList.url);
                           },
                         ),
                       ],
                     ),
+                  ],
+                )
               ],
-            )
-          ],
-          ),
+            ),
           ],
         ),
       ),
-      );
+    );
   }
 
   Widget _getImageFromURL(String url) {
