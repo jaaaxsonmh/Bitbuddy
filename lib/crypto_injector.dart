@@ -19,6 +19,6 @@ class Injector {
   Injector._internal();
 
   CryptoStore get cryptoCurrencyStore {
-        return new CryptoDataProducer();
+        return new CryptoDataAPI();
   }
 }

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:bitbuddy/data/crypto_data.dart';
 
-class CryptoDataProducer implements CryptoStore {
+class CryptoDataAPI implements CryptoStore {
   String coinMarketCapAPI =
       "https://api.coinmarketcap.com/v2/ticker/?limit=100&structure=array";
 
