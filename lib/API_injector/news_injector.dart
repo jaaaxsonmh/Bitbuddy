@@ -1,5 +1,5 @@
-import 'package:bitbuddy/data/crypto_data.dart';
-import 'package:bitbuddy/data/currency_data_api.dart';
+import 'package:bitbuddy/data/news_data.dart';
+import 'package:bitbuddy/data/news_data_api.dart';
 
 
 enum Flavour { API }
@@ -18,7 +18,7 @@ class Injector {
 
   Injector._internal();
 
-  CryptoStore get cryptoCurrencyStore {
-    return new CryptoDataAPI();
+  NewsStore get newsArticleStore {
+    return new NewsDataAPI();
   }
 }
