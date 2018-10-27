@@ -1,5 +1,5 @@
 import 'package:bitbuddy/data/crypto_data.dart';
-import 'package:bitbuddy/crypto_injector.dart';
+import 'package:bitbuddy/API_injector/crypto_injector.dart';
 
 abstract class CryptoCurrencyListViewContract {
   void onLoadCryptoComplete(List<CryptoData> items);

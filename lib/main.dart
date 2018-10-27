@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bitbuddy/view/currency_list_view.dart';
 import 'package:bitbuddy/utils/routers.dart';
-import 'package:bitbuddy/crypto_injector.dart';
+import 'package:bitbuddy/API_injector/crypto_injector.dart';
 import 'package:bitbuddy/utils/root.dart';
 
 var routes = <String, WidgetBuilder>{
