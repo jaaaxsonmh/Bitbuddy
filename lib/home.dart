@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bitbuddy/view/currency_list_view.dart';
+import 'package:bitbuddy/view/news_list_view.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -7,7 +8,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final List<Widget> _children = [null, CurrencyListView(), null];
+  final List<Widget> _children = [NewsListView(), CurrencyListView(), null];
   int _currentIndex = 1;
 
   @override
