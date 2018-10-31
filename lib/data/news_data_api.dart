@@ -5,7 +5,7 @@ import 'package:bitbuddy/data/news_data.dart';
 
 class NewsDataAPI implements NewsStore {
   String newsArticleAPI =
-      "https://newsapi.org/v2/everything?q=bitcoin&from=2018-09-27&sortBy=publishedAt&apiKey=0cc390e5c10b4bccbec21fabedd2322e";
+      "https://newsapi.org/v2/everything?q=bitcoin&from=2018-09-30&sortBy=publishedAt&apiKey=0cc390e5c10b4bccbec21fabedd2322e";
 
   @override
   Future<List<NewsData>> getNewsArticle() async {
