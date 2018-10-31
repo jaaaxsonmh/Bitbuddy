@@ -3,6 +3,7 @@ import 'package:bitbuddy/data/news_data.dart';
 import 'package:bitbuddy/modules/news_article_presenter.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:share/share.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class NewsListView extends StatefulWidget {
   @override
@@ -88,7 +89,17 @@ class _NewsListViewState extends State<NewsListView>
                 new Padding(
                   padding: new EdgeInsets.all(5.0),
                   child: new Text(
-                    newsList.publishedAt,
+                    timeago.format(DateTime.parse(newsList.publishedAt)),
+                    style: new TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                ),
+                new Padding(
+                  padding: new EdgeInsets.all(5.0),
+                  child: new Text(
+                    newsList.name,
                     style: new TextStyle(
                       fontWeight: FontWeight.w500,
                       color: Colors.grey[700],

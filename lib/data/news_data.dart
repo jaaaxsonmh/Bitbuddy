@@ -40,7 +40,7 @@ class NewsData {
 
   NewsData.fromMap(Map<String, dynamic> map)
       : id = map['id'],
-        name = map['name'],
+        name = map['source']['name'],
         author = map['author'],
         title = map['title'],
         description = map['description'],
