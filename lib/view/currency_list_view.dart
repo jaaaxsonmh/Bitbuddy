@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:bitbuddy/widgets/fancyfab.dart';
 import 'package:bitbuddy/data/crypto_data.dart';
 import 'package:bitbuddy/modules/crypto_currency_presenter.dart';
+import 'package:bitbuddy/utils/MyNavigator.dart';
+import 'package:bitbuddy/widgets/price_formated.dart';
 
 class CurrencyListView extends StatefulWidget {
   @override
@@ -45,7 +46,7 @@ class _CurrencyListViewState extends State<CurrencyListView>
       appBar: new AppBar(
         leading: Image.asset("images/bitbuddylogo.jpg"),
         backgroundColor: Color.fromRGBO(115, 222, 255, 1.0),
-        title: new Text("Bit Buddy Tickers",
+        title: new Text("Tickers",
             style: new TextStyle(color: Colors.white, fontSize: 28.0)),
         centerTitle: true,
       ),
@@ -78,6 +79,7 @@ class _CurrencyListViewState extends State<CurrencyListView>
   Widget _buildListItem(CryptoData currencyList) {
     return new Container(
       child: new Card(
+          child: new GestureDetector(
         child: new Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -92,8 +94,7 @@ class _CurrencyListViewState extends State<CurrencyListView>
                   ),
               title: new Text(currencyList.name,
                   style: new TextStyle(color: Colors.black, fontSize: 24.0)),
-              subtitle: _getPriceToSubtitle(
-                  currencyList.price, currencyList.percentChange1h),
+              subtitle: new PriceFormatted(price: currencyList.price, change: currencyList.percentChange1h),
               isThreeLine: false,
               trailing: new Text(
                 currencyList.symbol,
@@ -105,29 +106,16 @@ class _CurrencyListViewState extends State<CurrencyListView>
             )
           ],
         ),
+            onTap: () => _openCurrencyDetailPage(context, currencyList),
+      ),
       ),
     );
   }
 
-  Widget _getPriceToSubtitle(double price, double change) {
-    String priceFormated = price.toStringAsFixed(2);
-    TextSpan priceWidget = new TextSpan(
-        text: "\$$priceFormated",
-        style: new TextStyle(color: Colors.black, fontSize: 18.0));
-    String changeWidget = " $change%";
-    TextSpan changeTextWidget;
-
-    if ((change) >= 0) {
-      changeTextWidget = new TextSpan(
-          text: changeWidget,
-          style: new TextStyle(color: Colors.green, fontSize: 18.0));
-    } else {
-      changeTextWidget = new TextSpan(
-          text: changeWidget,
-          style: new TextStyle(color: Colors.red, fontSize: 18.0));
-    }
-
-    return new RichText(
-        text: new TextSpan(children: [priceWidget, changeTextWidget]));
+  _openCurrencyDetailPage(BuildContext context, CryptoData currencyList){
+    MyNavigator.goToCurrencyDetailPage(context, currencyList);
   }
+
 }
+
+

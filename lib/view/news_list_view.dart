@@ -48,7 +48,7 @@ class _NewsListViewState extends State<NewsListView>
       appBar: new AppBar(
         leading: Image.asset("images/bitbuddylogo.jpg"),
         backgroundColor: Color.fromRGBO(115, 222, 255, 1.0),
-        title: new Text("Bit Buddy News",
+        title: new Text("News",
             style: new TextStyle(color: Colors.white, fontSize: 28.0)),
         centerTitle: true,
       ),
