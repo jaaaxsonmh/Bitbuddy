@@ -155,8 +155,7 @@ class CurrencyFullDetailState extends State<CurrencyFullDetail> {
                       10) {
                     _controllerCrypto.text = (double.parse(fiatString) /
                         (currencyList.price))
-                        .toString()
-                        .substring(0, 8);
+                        .toString();
                   } else {
                     _controllerCrypto.text = (double.parse(fiatString) /
                         (currencyList.price))
