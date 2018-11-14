@@ -4,9 +4,11 @@ import 'package:bitbuddy/utils/routers.dart';
 import 'package:bitbuddy/API_injector/crypto_injector.dart';
 import 'package:bitbuddy/API_injector/news_injector.dart';
 import 'package:bitbuddy/utils/root.dart';
+import 'package:bitbuddy/settings_page.dart';
 
 var routes = <String, WidgetBuilder>{
   Routers.home: (BuildContext context) => CurrencyListView(),
+  Routers.settings: (BuildContext context) => Settings()
 };
 
 void main() async {
@@ -20,7 +22,7 @@ class Bitbuddy extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
         theme: ThemeData(primaryColor: Colors.white),
-        title: 'Bitbuddy',
+        title: 'Bit Buddy',
         home: new Root(),
         routes: routes);
   }
