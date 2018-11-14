@@ -131,6 +131,8 @@ class CurrencyFullDetailState extends State<CurrencyFullDetail> {
                 border: InputBorder.none,
                 contentPadding: new EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 10.0),
                 labelText: currencyList.symbol,
+                hintText: "Enter Crypto Currency Amount",
+
               ),
               textAlign: TextAlign.center,
             ),
@@ -167,6 +169,7 @@ class CurrencyFullDetailState extends State<CurrencyFullDetail> {
                 border: InputBorder.none,
                 contentPadding: new EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 10.0),
                 labelText: "USD",
+                hintText: "Enter Fiat Currency Amount",
               ),
               textAlign: TextAlign.center,
             ),

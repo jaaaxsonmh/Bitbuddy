@@ -88,9 +88,9 @@ class _CurrencyListViewState extends State<CurrencyListView>
                   radius: 30.0,
                   backgroundColor: Color.fromRGBO(115, 222, 255, 1.0),
                   child: Image.network(
-                      "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@0b37b127fbec5091a47921deeba2dce2c1f8eb16/128/color/" +
+                      "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@0b37b127fbec5091a47921deeba2dce2c1f8eb16/32@2x/color/" +
                           currencyList.symbol.toLowerCase() +
-                          ".png") /*new Text(currencyList['symbol'], style: new TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, fontSize: 18.0),),*/
+                          "@2x.png") /*new Text(currencyList['symbol'], style: new TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, fontSize: 18.0),),*/
                   ),
               title: new Text(currencyList.name,
                   style: new TextStyle(color: Colors.black, fontSize: 24.0)),
