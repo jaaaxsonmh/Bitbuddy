@@ -45,13 +45,6 @@ class _NewsListViewState extends State<NewsListView>
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        leading: Image.asset("images/bitbuddylogo.jpg"),
-        backgroundColor: Color.fromRGBO(115, 222, 255, 1.0),
-        title: new Text("News",
-            style: new TextStyle(color: Colors.white, fontSize: 28.0)),
-        centerTitle: true,
-      ),
       body: _isLoading
           ? new Center(
               child: new CircularProgressIndicator(),

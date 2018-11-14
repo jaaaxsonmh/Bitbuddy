@@ -8,6 +8,10 @@ class MyNavigator{
     Navigator.pushNamed(context, Routers.home);
   }
 
+  static void goToSettings(BuildContext context) {
+    Navigator.pushNamed(context, Routers.settings);
+  }
+
   static void goToCurrencyDetailPage(BuildContext context, CryptoData currencyList) {
     Navigator.push(
       context,
