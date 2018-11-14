@@ -80,7 +80,7 @@ class _HomeState extends State<Home> {
 
   return AppBar(
       leading: new IconButton(
-          icon: new Icon(Icons.menu),
+          icon: new Icon(Icons.menu, color:  Colors.white,),
           onPressed: () {
             _scaffoldKey.currentState.openDrawer();
           }),

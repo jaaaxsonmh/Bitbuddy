@@ -21,7 +21,7 @@ class Bitbuddy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-        theme: ThemeData(primaryColor: Colors.white),
+        theme: ThemeData(primaryColor: Colors.black),
         title: 'Bit Buddy',
         home: new Root(),
         routes: routes);
