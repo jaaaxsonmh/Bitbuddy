@@ -89,7 +89,6 @@ class CurrencyFullDetailState extends State<CurrencyFullDetail> {
 
   Widget _buildConverterCalculator(CryptoData currencyList) {
     return new Container(
-
       margin: new EdgeInsets.all(5.0),
       child: new Column(
         children: <Widget>[
@@ -101,9 +100,6 @@ class CurrencyFullDetailState extends State<CurrencyFullDetail> {
               onChanged: (newValue) {
                 setState(() {
                   cryptoString = newValue.trim();
-                  if (fiatString.length == 0) {
-                    _controllerFiat.text = "Nothing here yet";
-                  }
                   _controllerFiat.text =
                       "\$" + (double.parse(cryptoString) * (currencyList.price))
                           .toString();
@@ -114,7 +110,6 @@ class CurrencyFullDetailState extends State<CurrencyFullDetail> {
                 contentPadding: new EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 10.0),
                 labelText: currencyList.symbol,
                 hintText: "Enter Crypto Currency Amount",
-
               ),
               textAlign: TextAlign.center,
             ),
@@ -129,9 +124,7 @@ class CurrencyFullDetailState extends State<CurrencyFullDetail> {
               onChanged: (newValue) {
                 setState(() {
                   fiatString = newValue.trim();
-                  if (cryptoString.length == 0) {
-                    _controllerCrypto.text = "Nothing here yet";
-                  }
+
                   if ((double.parse(fiatString) /
                       (currencyList.price))
                       .toString()
