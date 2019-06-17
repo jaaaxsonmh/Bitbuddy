@@ -46,23 +46,7 @@ class CurrencyFullDetailState extends State<CurrencyFullDetail> {
         ),
         child: Column(
           children: <Widget>[
-            new Padding(padding: EdgeInsets.fromLTRB(0.0, 6.0, 0.0, 0.0),
-              child: new Text("Currency Ticker",
-                  style: new TextStyle(
-                    fontSize: 32.0,
-                    color: Color.fromRGBO(115, 222, 255, 1.0),
-
-                  )),
-            ),
             _buildHeaderCard(currencyList),
-            new Padding(padding: EdgeInsets.fromLTRB(0.0, 6.0, 0.0, 0.0),
-              child: new Text("Currency Converter",
-                  style: new TextStyle(
-                    fontSize: 32.0,
-                    color: Color.fromRGBO(115, 222, 255, 1.0),
-
-                  )),
-            ),
             _buildConverterCalculator(currencyList),
           ],
         ),

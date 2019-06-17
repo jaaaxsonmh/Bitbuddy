@@ -80,12 +80,11 @@ class _HomeState extends State<Home> {
 
   return AppBar(
       leading: new IconButton(
-          icon: new Icon(Icons.menu, color:  Colors.white,),
+          icon: new Icon(Icons.menu, color:  Colors.black,),
           onPressed: () {
             _scaffoldKey.currentState.openDrawer();
           }),
-      backgroundColor: Color.fromRGBO(115, 222, 255, 1.0),
-      title: new Text(titleText,style: new TextStyle(color: Colors.white, fontSize: 28.0))
+      title: new Text(titleText,style: new TextStyle( fontSize: 28.0))
     );
 
   }
