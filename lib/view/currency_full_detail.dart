@@ -32,10 +32,8 @@ class CurrencyFullDetailState extends State<CurrencyFullDetail> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        leading: Image.asset("images/bitbuddylogo.jpg"),
-        backgroundColor: Color.fromRGBO(115, 222, 255, 1.0),
         title: new Text(currencyList.name + " Summary",
-            style: new TextStyle(color: Colors.white, fontSize: 28.0)),
+            style: new TextStyle(fontSize: 28.0)),
         centerTitle: true,
       ),
       body: new Container(
