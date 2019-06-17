@@ -1,5 +1,5 @@
-import 'package:test/test.dart';
 import 'package:bitbuddy/utils/routers.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
 
