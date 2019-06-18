@@ -2,6 +2,7 @@ import 'package:bitbuddy/utils/MyNavigator.dart';
 import 'package:flutter/material.dart';
 import 'package:bitbuddy/view/currency_list_view.dart';
 import 'package:bitbuddy/view/news_list_view.dart';
+import 'package:share/share.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -53,28 +54,66 @@ class _HomeState extends State<Home> {
 
   Drawer buildDrawer(BuildContext context) {
     return Drawer(
-        child: ListView(
-      children: <Widget>[
-        //TODO:: Update to user account, email, and picture based on firebase auth / email.
-        new UserAccountsDrawerHeader(
-            currentAccountPicture: new CircleAvatar(
-              backgroundColor: Colors.blue,
-              child: new Icon(Icons.add_a_photo),
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            child: ListView(
+              children: <Widget>[
+                //TODO:: Update to user account, email, and picture based on firebase auth / email.
+                new UserAccountsDrawerHeader(
+                  currentAccountPicture: new CircleAvatar(
+                    backgroundColor: Colors.blue,
+                    child: new Icon(Icons.add_a_photo),
+                  ),
+                  accountName: new Text('Jack Hosking'),
+                  accountEmail: new Text('me@jackhosking.co.nz'),
+                  otherAccountsPictures: <Widget>[
+                    FlatButton(
+                        child: new Icon(
+                          Icons.rate_review,
+                          color: Colors.lightBlueAccent,
+                        ),
+                        onPressed: () {
+                          Share.share(
+                              'Come try Bit Buddy, a simple cryptocurreny portfolio.');
+                        }),
+                    FlatButton(
+                        child: new Icon(
+                          Icons.cake,
+                          color: Colors.lightBlueAccent,
+                        ),
+                        onPressed: () {
+                          showAboutDialog(
+                            context: context,
+                            applicationIcon: Image.asset(
+                                "images/bitbuddylogo.jpg",
+                                width: 50.0),
+                            applicationVersion: 'version 0.3',
+                          );
+                        })
+                  ],
+                ),
+              ],
             ),
-            accountName: new Text('Jack Hosking'),
-            accountEmail: new Text('me@jackhosking.co.nz')),
-        new Container(
-          child: Align(
-              alignment: FractionalOffset.bottomCenter,
-              child: ListTile(
-                  leading: Icon(Icons.settings),
-                  title: Text('Settings'),
-                  onTap: () {
-                    MyNavigator.goToSettings(context);
-                  })),
-        )
-      ],
-    ));
+          ),
+          Container(
+              child: Align(
+                  alignment: FractionalOffset.bottomCenter,
+                  child: Container(
+                      child: Column(
+                    children: <Widget>[
+                      Divider(),
+                      ListTile(
+                          leading: Icon(Icons.settings),
+                          title: Text('Settings'),
+                          onTap: () {
+                            MyNavigator.goToSettings(context);
+                          }),
+                    ],
+                  ))))
+        ],
+      ),
+    );
   }
 
   AppBar buildAppBar(BuildContext context, int index) {
