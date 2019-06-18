@@ -63,7 +63,7 @@ class _HomeState extends State<Home> {
                 new UserAccountsDrawerHeader(
                   currentAccountPicture: new CircleAvatar(
                     backgroundColor: Colors.lightBlueAccent,
-                    child: new Icon(Icons.add_a_photo),
+                    child: Image.asset("images/useraccountexample.jpg")
                   ),
                   accountName: new Text('Jack Hosking'),
                   accountEmail: new Text('me@jackhosking.co.nz'),
@@ -75,7 +75,7 @@ class _HomeState extends State<Home> {
                         ),
                         onPressed: () {
                           Share.share(
-                              'Come try Bit Buddy, a simple cryptocurreny portfolio.');
+                              'Come try Bit Buddy, a simple cryptocurreny portfolio app.');
                         }),
                     FlatButton(
                         child: new Icon(
