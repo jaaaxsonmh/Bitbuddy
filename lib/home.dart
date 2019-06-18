@@ -62,7 +62,7 @@ class _HomeState extends State<Home> {
                 //TODO:: Update to user account, email, and picture based on firebase auth / email.
                 new UserAccountsDrawerHeader(
                   currentAccountPicture: new CircleAvatar(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: Colors.lightBlueAccent,
                     child: new Icon(Icons.add_a_photo),
                   ),
                   accountName: new Text('Jack Hosking'),
