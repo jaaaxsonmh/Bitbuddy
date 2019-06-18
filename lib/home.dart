@@ -55,12 +55,24 @@ class _HomeState extends State<Home> {
     return Drawer(
         child: ListView(
       children: <Widget>[
-        ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-            onTap: () {
-              MyNavigator.goToSettings(context);
-            })
+        //TODO:: Update to user account, email, and picture based on firebase auth / email.
+        new UserAccountsDrawerHeader(
+            currentAccountPicture: new CircleAvatar(
+              backgroundColor: Colors.blue,
+              child: new Icon(Icons.add_a_photo),
+            ),
+            accountName: new Text('Jack Hosking'),
+            accountEmail: new Text('me@jackhosking.co.nz')),
+        new Container(
+          child: Align(
+              alignment: FractionalOffset.bottomCenter,
+              child: ListTile(
+                  leading: Icon(Icons.settings),
+                  title: Text('Settings'),
+                  onTap: () {
+                    MyNavigator.goToSettings(context);
+                  })),
+        )
       ],
     ));
   }
@@ -68,24 +80,23 @@ class _HomeState extends State<Home> {
   AppBar buildAppBar(BuildContext context, int index) {
     String titleText = "Bit Buddy";
 
-  if(index == 0)
-    {
+    if (index == 0) {
       titleText = "News";
-    } else if (index == 1)
-      {
-        titleText = "Tickers";
-      } else {
-    titleText = "Portfolio";
-  }
+    } else if (index == 1) {
+      titleText = "Tickers";
+    } else {
+      titleText = "Portfolio";
+    }
 
-  return AppBar(
-      leading: new IconButton(
-          icon: new Icon(Icons.menu, color:  Colors.black,),
-          onPressed: () {
-            _scaffoldKey.currentState.openDrawer();
-          }),
-      title: new Text(titleText,style: new TextStyle( fontSize: 28.0))
-    );
-
+    return AppBar(
+        leading: new IconButton(
+            icon: new Icon(
+              Icons.menu,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              _scaffoldKey.currentState.openDrawer();
+            }),
+        title: new Text(titleText, style: new TextStyle(fontSize: 28.0)));
   }
 }
