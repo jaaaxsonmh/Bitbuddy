@@ -84,8 +84,7 @@ class _HomeState extends State<Home> {
                           color: Colors.lightBlueAccent,
                         ),
                         onPressed: () {
-                            LaunchReview.launch(
-                              androidAppId: 'com.skuu.bitbuddy');
+                            LaunchReview.launch(androidAppId: 'com.skuu.bitbuddy');
                         }),
                     FlatButton(
                         child: new Icon(
