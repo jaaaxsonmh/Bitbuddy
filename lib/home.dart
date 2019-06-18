@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:bitbuddy/view/currency_list_view.dart';
 import 'package:bitbuddy/view/news_list_view.dart';
 import 'package:share/share.dart';
+import 'package:launch_review/launch_review.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -70,12 +71,21 @@ class _HomeState extends State<Home> {
                   otherAccountsPictures: <Widget>[
                     FlatButton(
                         child: new Icon(
-                          Icons.rate_review,
+                          Icons.share,
                           color: Colors.lightBlueAccent,
                         ),
                         onPressed: () {
                           Share.share(
                               'Come try Bit Buddy, a simple cryptocurreny portfolio app.');
+                        }),
+                    FlatButton(
+                        child: new Icon(
+                          Icons.rate_review,
+                          color: Colors.lightBlueAccent,
+                        ),
+                        onPressed: () {
+                            LaunchReview.launch(
+                              androidAppId: 'com.skuu.bitbuddy');
                         }),
                     FlatButton(
                         child: new Icon(
