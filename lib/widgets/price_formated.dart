@@ -18,16 +18,16 @@ class PriceFormatted extends StatelessWidget {
         style: new TextStyle(color: Colors.black, fontSize: 18.0));
     String changeWidget = " $change%";
     TextSpan changeTextWidget;
-
+    Color colourIndication;
     if ((change) >= 0) {
-      changeTextWidget = new TextSpan(
-          text: changeWidget,
-          style: new TextStyle(color: Colors.green, fontSize: 18.0));
+      colourIndication = Colors.green;
     } else {
-      changeTextWidget = new TextSpan(
-          text: changeWidget,
-          style: new TextStyle(color: Colors.red, fontSize: 18.0));
+      colourIndication = Colors.red;
     }
+
+    changeTextWidget = new TextSpan(
+        text: changeWidget,
+        style: new TextStyle(color: colourIndication, fontSize: 18.0));
 
     return new RichText(
         text: new TextSpan(children: [priceWidget, changeTextWidget]));

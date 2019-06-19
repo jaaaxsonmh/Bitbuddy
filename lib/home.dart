@@ -67,7 +67,6 @@ class _HomeState extends State<Home> {
                     child: Image.asset("images/useraccountexample.jpg")
                   ),
                   accountName: new Text('Jack Hosking'),
-                  accountEmail: new Text('me@jackhosking.co.nz'),
                   otherAccountsPictures: <Widget>[
                     FlatButton(
                         child: new Icon(
@@ -113,8 +112,8 @@ class _HomeState extends State<Home> {
                     children: <Widget>[
                       Divider(),
                       ListTile(
-                          leading: Icon(Icons.settings),
-                          title: Text('Settings'),
+                          leading: Icon(Icons.exit_to_app),
+                          title: Text('Sign Out'),
                           onTap: () {
                             MyNavigator.goToSettings(context);
                           }),
