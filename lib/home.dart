@@ -67,6 +67,7 @@ class _HomeState extends State<Home> {
                     child: Image.asset("images/useraccountexample.jpg")
                   ),
                   accountName: new Text('Jack Hosking'),
+                  accountEmail: null,
                   otherAccountsPictures: <Widget>[
                     FlatButton(
                         child: new Icon(
