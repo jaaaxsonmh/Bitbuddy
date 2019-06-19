@@ -79,7 +79,6 @@ class _CurrencyListViewState extends State<CurrencyListView>
             new ListTile(
               leading: new CircleAvatar(
                   radius: 30.0,
-                  backgroundColor: Color.fromRGBO(115, 222, 255, 1.0),
                   child: Image.network(
                       "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@0b37b127fbec5091a47921deeba2dce2c1f8eb16/32@2x/color/" +
                           currencyList.symbol.toLowerCase() +
