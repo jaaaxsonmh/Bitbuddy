@@ -5,10 +5,11 @@ import 'package:bitbuddy/API_injector/crypto_injector.dart';
 import 'package:bitbuddy/API_injector/news_injector.dart';
 import 'package:bitbuddy/utils/root.dart';
 import 'package:bitbuddy/settings_page.dart';
+import 'package:bitbuddy/view/portfolio_view.dart';
 
 var routes = <String, WidgetBuilder>{
   Routers.home: (BuildContext context) => CurrencyListView(),
-  Routers.settings: (BuildContext context) => Settings()
+  Routers.settings: (BuildContext context) => Settings(),
 };
 
 void main() async {

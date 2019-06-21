@@ -4,6 +4,7 @@ import 'package:bitbuddy/view/currency_list_view.dart';
 import 'package:bitbuddy/view/news_list_view.dart';
 import 'package:share/share.dart';
 import 'package:launch_review/launch_review.dart';
+import 'package:bitbuddy/view/portfolio_view.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final List<Widget> _children = [NewsListView(), CurrencyListView(), null];
+  final List<Widget> _children = [NewsListView(), CurrencyListView(), PortfolioView()];
   int _currentIndex = 1;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
