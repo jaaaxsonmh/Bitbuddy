@@ -1,13 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'dart:core';
-import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:bitbuddy/data/crypto_data.dart';
 
 class CryptoDataAPI implements CryptoStore {
-  List data;
   String coinMarketCapAPI =
       "https://api.coinmarketcap.com/v2/ticker/?limit=100&structure=array";
 
@@ -25,6 +22,4 @@ class CryptoDataAPI implements CryptoStore {
         .map((crypto) => new CryptoData.fromMap(crypto))
         .toList();
   }
-
-
 }

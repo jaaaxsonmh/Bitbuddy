@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:bitbuddy/data/crypto_data.dart';
@@ -15,6 +17,8 @@ class _CurrencyListViewState extends State<CurrencyListView>
     implements CryptoCurrencyListViewContract {
   CryptoCurrencyListPresenter _presenter;
   List<CryptoData> _currency;
+  bool _isLoading;
+
   _CurrencyListViewState() {
     _presenter = new CryptoCurrencyListPresenter(this);
   }
@@ -22,13 +26,15 @@ class _CurrencyListViewState extends State<CurrencyListView>
   @override
   void initState() {
     super.initState();
-    _presenter.loadData();
+    _presenter.loadCurrency();
+    _isLoading = true;
   }
 
   @override
-  void onLoadCryptoComplete(List<CryptoData> items) {
+  Future onLoadCryptoComplete(List<CryptoData> items) async {
     setState(() {
       _currency = items;
+      _isLoading = false;
       print(_currency.length);
     });
   }
@@ -40,27 +46,9 @@ class _CurrencyListViewState extends State<CurrencyListView>
 
   @override
   Widget build(BuildContext context) {
-     return new RefreshIndicator(
-      onRefresh: _refresh,
-      child: new CustomScrollView(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: false,
-        slivers: <Widget>[
-          new SliverPadding(
-            padding: const EdgeInsets.symmetric(vertical: 1.0),
-            sliver: new SliverList(
-              delegate: _currency != null ? new SliverChildBuilderDelegate(
-                    (context, index) => _buildListItem(_currency[index]),
-                childCount: _currency.length,
-              ) : new SliverChildBuilderDelegate(
-                    (context, index) => new CircularProgressIndicator(),
-              ),
-            ),
-          ),
-        ],
-
-      ),
-    );
+    return new Scaffold(
+      body: _isLoading ? new Center(child: new CircularProgressIndicator()) : _cryptoHolder()
+      );
   }
 
   //gets from api not cache
@@ -76,7 +64,7 @@ class _CurrencyListViewState extends State<CurrencyListView>
               children: <Widget>[
                 new Flexible(
                     child: new ListView.builder(
-                  itemCount: _currency.length == null ? 100 : _currency.length,
+                  itemCount: _currency.length,
                   padding: const EdgeInsets.all(5.0),
                   itemBuilder: (BuildContext context, int index) {
                     final CryptoData currency = _currency[index];
