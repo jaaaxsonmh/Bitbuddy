@@ -68,7 +68,6 @@ class _CurrencyListViewState extends State<CurrencyListView>
                   padding: const EdgeInsets.all(5.0),
                   itemBuilder: (BuildContext context, int index) {
                     final CryptoData currency = _currency[index];
-
                     return _buildListItem(currency);
                   },
                 )),

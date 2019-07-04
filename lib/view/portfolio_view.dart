@@ -16,7 +16,7 @@ class _PortfolioViewState extends State<PortfolioView> {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new Center(
-        child: new CircularProgressIndicator(),
+        child: new Text("Coming soon..."),
       )
     );
   }
