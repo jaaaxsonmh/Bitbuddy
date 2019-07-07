@@ -20,7 +20,7 @@ class LoginPageState extends State<LoginPageView> {
   String _password;
   FormType _formType = FormType.login;
 
-  bool validateAndSaveLogin() {
+  bool save() {
     final form = formKey.currentState;
 
     if(form.validate()) {
@@ -29,6 +29,21 @@ class LoginPageState extends State<LoginPageView> {
       return true;
     }
     return false;
+  }
+
+  void submit() async {
+    if(save()) {
+      try {
+        if(_formType == FormType.login) {
+          String uid = await widget.auth.signInWitEmailAndPassword(_email, _password);
+        } else {
+          String uid = await widget.auth.createUserWithEmailAndPassword(_email, _password);
+        }
+        widget.onSignedIn();
+      } catch (e) {
+        print('$e');
+      }
+    }
   }
 
   void goToRegister() {
