@@ -62,6 +62,6 @@ class LoginPageState extends State<LoginPageView> {
 
   @override
   Widget build(BuildContext context) {
-    return null;
+    return new Center(child: new Text("Login Page"),);
   }
 }

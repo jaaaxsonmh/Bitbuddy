@@ -4,6 +4,7 @@ import 'package:bitbuddy/home.dart';
 import 'package:bitbuddy/utils/auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:bitbuddy/utils/LocalDB.dart';
+import 'package:bitbuddy/view/login_page_view.dart';
 
 
 class Root extends StatefulWidget {
@@ -55,11 +56,11 @@ class _RootState extends State<Root> {
   Widget build(BuildContext context) {
     switch (_rootStatus) {
       case RootStatus.notSignedIn:
-        return null;
+        return new LoginPageView(auth: widget.auth, onSignedIn: _signedIn);
       case RootStatus.signedIn:
         return new Home(auth: widget.auth, onSignedOut: _signedOut);
       case RootStatus.intro:
-        return null;
+        return new LoginPageView(auth: widget.auth, onSignedIn: _signedIn);
       case RootStatus.splash:
         return new SplashScreen(onSplashOver: _afterSplashState);
       case RootStatus.home:
