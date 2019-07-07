@@ -1,3 +1,4 @@
+import 'package:bitbuddy/utils/AppTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:bitbuddy/utils/LocalDB.dart';
 import 'package:bitbuddy/utils/MyNavigator.dart';
@@ -40,7 +41,7 @@ class IntroCardViewState extends State<IntroCardView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.lightBlueAccent,
+        color: AppTheme.lightBlue,
         padding: EdgeInsets.all(8.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
