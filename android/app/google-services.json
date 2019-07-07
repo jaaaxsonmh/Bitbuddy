@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "908667457462",
+    "firebase_url": "https://bitbuddy-adebd.firebaseio.com",
+    "project_id": "bitbuddy-adebd",
+    "storage_bucket": "bitbuddy-adebd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908667457462:android:5a699d50153acf27",
+        "android_client_info": {
+          "package_name": "com.example.bitbuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "908667457462-at4beir4kl7ihutjse98l8rhokdilc9i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwhlm4QSxqplHQ8PH9kcE67A8_8wfb3EI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "908667457462-at4beir4kl7ihutjse98l8rhokdilc9i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
