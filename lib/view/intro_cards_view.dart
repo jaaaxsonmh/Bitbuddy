@@ -26,6 +26,8 @@ class IntroCardViewState extends State<IntroCardView> {
       if (_current == _total) {
         _last = true;
         _setViewed();
+      } else {
+        _last = false;
       }
     });
   }
@@ -62,13 +64,16 @@ class IntroCardViewState extends State<IntroCardView> {
   List<Widget> children(BuildContext context) {
     return <Widget>[
       FlatButton(
-        child: Text(_last ? "" : IntroStrings.skip,
-            style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0)),
-        onPressed: () => _last ? null : MyNavigator.goToHome(context),
-      ),
+          child: Text(_current == 0 ? "" : IntroStrings.skip,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0)),
+          onPressed: () => _current == 0
+              ? null
+              : _pageController.previousPage(
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.easeOut)),
       FlatButton(
         child: Text(_last ? IntroStrings.last : IntroStrings.next,
             style: TextStyle(
@@ -87,25 +92,21 @@ class IntroCardViewState extends State<IntroCardView> {
     return PageView(
       children: <Widget>[
         IntroCard(
-          title: IntroStrings.titleCard1,
-          body: IntroStrings.bodyCard1,
-          icon: Icons.accessibility_new
-        ),
+            title: IntroStrings.titleCard1,
+            body: IntroStrings.bodyCard1,
+            icon: Icons.accessibility_new),
         IntroCard(
-          title: IntroStrings.titleCard2,
-          body: IntroStrings.bodyCard2,
-          icon: Icons.trending_up
-        ),
+            title: IntroStrings.titleCard2,
+            body: IntroStrings.bodyCard2,
+            icon: Icons.trending_up),
         IntroCard(
-          title: IntroStrings.titleCard3,
-          body: IntroStrings.bodyCard3,
-          icon: Icons.playlist_add_check
-        ),
+            title: IntroStrings.titleCard3,
+            body: IntroStrings.bodyCard3,
+            icon: Icons.playlist_add_check),
         IntroCard(
-          title: IntroStrings.titleCard4,
-          body: IntroStrings.bodyCard4,
-          icon: Icons.perm_device_information
-        )
+            title: IntroStrings.titleCard4,
+            body: IntroStrings.bodyCard4,
+            icon: Icons.perm_device_information)
       ],
       controller: _pageController,
       onPageChanged: onPageChange,

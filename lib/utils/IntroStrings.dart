@@ -16,7 +16,7 @@ class IntroStrings {
   static const String bodyCard4 = "See the latest news related to \n cryptocurrency and blockchain";
 
   // handle navigation
-  static const String skip = "SKIP";
-  static const String next = "next";
-  static const String last = "Enjoy!";
+  static const String skip = "BACK";
+  static const String next = "NEXT";
+  static const String last = "ENJOY!";
 }
