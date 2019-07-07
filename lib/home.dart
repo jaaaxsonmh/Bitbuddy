@@ -11,16 +11,6 @@ class Home extends StatefulWidget {
   final BaseAuth auth;
   final VoidCallback onSignedOut;
 
-  void _signOut() async {
-    try{
-      await auth.signOut();
-      onSignedOut();
-
-    } catch (e) {
-      print(e);
-    }
-  }
-
   @override
   _HomeState createState() => new _HomeState();
 }
@@ -131,7 +121,9 @@ class _HomeState extends State<Home> {
                           leading: Icon(Icons.exit_to_app),
                           title: Text('Sign Out'),
                           onTap: () {
-                            MyNavigator.goToSettings(context);
+                            widget.auth.signOut();
+                            widget.onSignedOut();
+                            Navigator.pop(context);
                           }),
                     ],
                   ))))
