@@ -4,8 +4,23 @@ import 'package:bitbuddy/view/currency_list_view.dart';
 import 'package:bitbuddy/view/news_list_view.dart';
 import 'package:share/share.dart';
 import 'package:launch_review/launch_review.dart';
+import 'package:bitbuddy/utils/auth.dart';
 
 class Home extends StatefulWidget {
+  Home({this.auth, this.onSignedOut});
+  final BaseAuth auth;
+  final VoidCallback onSignedOut;
+
+  void _signOut() async {
+    try{
+      await auth.signOut();
+      onSignedOut();
+
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   _HomeState createState() => new _HomeState();
 }
