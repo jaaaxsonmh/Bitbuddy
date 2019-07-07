@@ -75,7 +75,6 @@ class _RootState extends State<Root> {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     var introCardsViewed = preferences.getBool(LocalDB.isIntro) ?? false;
 
-
     if(uid == null) {
       _afterIntro = RootStatus.notSignedIn;
     } else {

@@ -81,7 +81,7 @@ class IntroCardViewState extends State<IntroCardView> {
                 fontWeight: FontWeight.bold,
                 fontSize: 20.0)),
         onPressed: () => _last
-            ? MyNavigator.goToHome(context)
+            ? widget.onIntroOver()
             : _pageController.nextPage(
                 duration: Duration(milliseconds: 300), curve: Curves.easeIn),
       ),
