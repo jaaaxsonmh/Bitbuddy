@@ -3,28 +3,28 @@ import 'package:bitbuddy/utils/LocalDB.dart';
 import 'package:bitbuddy/utils/MyNavigator.dart';
 import 'package:bitbuddy/utils/IntroStrings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:bitbuddy/widgets/IntroCard.dart';
 
-class IntroCard extends StatefulWidget {
-  IntroCard({this.onIntroOver});
+class IntroCardView extends StatefulWidget {
+  IntroCardView({this.onIntroOver});
 
   final VoidCallback onIntroOver;
 
   @override
-  State<StatefulWidget> createState() => IntroCardState();
+  State<StatefulWidget> createState() => IntroCardViewState();
 }
 
-class IntroCardState extends State<IntroCard> {
+class IntroCardViewState extends State<IntroCardView> {
   final PageController _pageController = new PageController();
   int _current = 0;
   int _total = 3;
-  bool _last;
+  bool _last = false;
 
   void onPageChange(int page) {
     setState(() {
       _current = page;
       if (_current == _total) {
         _last = true;
-        _setViewed();
         widget.onIntroOver();
       }
     });
@@ -38,7 +38,7 @@ class IntroCardState extends State<IntroCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.green,
+        color: Colors.lightBlueAccent,
         padding: EdgeInsets.all(8.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -85,7 +85,30 @@ class IntroCardState extends State<IntroCard> {
 
   PageView buildPageView() {
     return PageView(
-      children: <Widget>[],
+      children: <Widget>[
+        IntroCard(
+          title: IntroStrings.titleCard1,
+          body: IntroStrings.bodyCard1,
+          icon: Icons.accessibility_new
+        ),
+        IntroCard(
+          title: IntroStrings.titleCard2,
+          body: IntroStrings.bodyCard2,
+          icon: Icons.trending_up
+        ),
+        IntroCard(
+          title: IntroStrings.titleCard3,
+          body: IntroStrings.bodyCard3,
+          icon: Icons.playlist_add_check
+        ),
+        IntroCard(
+          title: IntroStrings.titleCard4,
+          body: IntroStrings.bodyCard4,
+          icon: Icons.perm_device_information
+        )
+      ],
+      controller: _pageController,
+      onPageChanged: onPageChange,
     );
   }
 }

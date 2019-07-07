@@ -7,7 +7,7 @@ class IntroCard extends StatefulWidget {
       {this.title,
       this.body,
       this.icon,
-      this.color = Colors.blueAccent,
+      this.color = Colors.lightBlueAccent,
       this.src});
 
   @override
