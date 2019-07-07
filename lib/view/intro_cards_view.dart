@@ -25,7 +25,7 @@ class IntroCardViewState extends State<IntroCardView> {
       _current = page;
       if (_current == _total) {
         _last = true;
-        widget.onIntroOver();
+        _setViewed();
       }
     });
   }
