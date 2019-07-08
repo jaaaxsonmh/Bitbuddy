@@ -70,7 +70,6 @@ class LoginPageState extends State<LoginPageView> {
       appBar: new AppBar(
         backgroundColor:  Colors.transparent,
         elevation: 0.0,
-        title: new Text(_formType == FormType.login ? "Login Here" : "Register Here"),
       ),
       body: new Container(
         child: Column(
@@ -84,7 +83,7 @@ class LoginPageState extends State<LoginPageView> {
                   padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
                   child: new Text(
                     _formType == FormType.login ? "Login to Bit Buddy" : "Register for Bit Buddy",
-                    style: new TextStyle(fontSize: 32.0, color: Colors.lightBlueAccent),
+                    style: new TextStyle(fontSize: 32.0),
                   ),
                 )
               ],
@@ -94,8 +93,14 @@ class LoginPageState extends State<LoginPageView> {
               child: new Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  inputFields(),
-                  submitButtons()
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: inputFields(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: submitButtons(),
+                  )
                 ],
               ),
             ),
@@ -110,13 +115,13 @@ class LoginPageState extends State<LoginPageView> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         new TextFormField(
-          decoration: new InputDecoration(labelText: "Email"),
+          decoration: new InputDecoration(labelText: "Enter Email here"),
           keyboardType: TextInputType.emailAddress,
           validator: (value) => value.isEmpty ? 'Email can\'t be empty' : null,
           onSaved: (value) => _email = value,
         ),
         new TextFormField(
-          decoration: new InputDecoration(labelText: "Password"),
+          decoration: new InputDecoration(labelText: "Enter Password here"),
           obscureText: true,
           validator: (value) => value.isEmpty ? 'Password can\'t be empty' : value.length < 8 ? "Password can\'t be less than 8 characters" : null,
           onSaved: (value) => _password = value,
