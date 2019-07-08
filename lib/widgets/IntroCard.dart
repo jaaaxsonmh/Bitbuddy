@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:bitbuddy/widgets/StackedIcon.dart';
 
 class IntroCard extends StatefulWidget {
-  final icon, title, color, src, body;
+  final icon, title, color, body;
 
   IntroCard(
       {this.title,
       this.body,
       this.icon,
-      this.color = Colors.lightBlueAccent,
-      this.src});
+      this.color = Colors.lightBlueAccent});
 
   @override
   State<StatefulWidget> createState() => IntroCardViewState();
@@ -48,6 +48,8 @@ class IntroCardViewState extends State<IntroCard>
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
+            new StackedIcon(),
+
             new Transform(transform: new Matrix4.translationValues(_animation.value, 0.0, 0.0),
             child: new Text(
               widget.title,
@@ -70,8 +72,7 @@ class IntroCardViewState extends State<IntroCard>
                     color: widget.color),
               ),
             ),
-            new Icon(widget.icon, size: 80.0, color: widget.color),
-            new Image.network(widget.src ?? "")
+            new Icon(widget.icon, size: 80.0, color: widget.color)
           ]
         )
       )

@@ -1,7 +1,7 @@
 class IntroStrings {
   //intro card
-  static const String titleCard1 = "Bit Buddy";
-  static const String bodyCard1 = "Simple cryptocurrency portfolio";
+  static const String titleCard1 = "Welcome to Bit Buddy";
+  static const String bodyCard1 = "We are a simple to use \n cryptocurrency portfolio \n\n slide to the next card to learn more";
 
   // card 2
   static const String titleCard2 = "Manage your Portfolio";
