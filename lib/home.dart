@@ -8,6 +8,7 @@ import 'package:bitbuddy/utils/auth.dart';
 
 class Home extends StatefulWidget {
   Home({this.auth, this.onSignedOut});
+
   final BaseAuth auth;
   final VoidCallback onSignedOut;
 
@@ -18,8 +19,22 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final List<Widget> _children = [NewsListView(), CurrencyListView(), null];
   int _currentIndex = 1;
+  String _email = "";
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+   _getEmail();
+  }
+
+  _getEmail() {
+    getEmailFromAuth().then((val) => setState(() {
+      _email = val;
+      print("here" + _email);
+    }));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +73,10 @@ class _HomeState extends State<Home> {
     });
   }
 
+  Future<String> getEmailFromAuth() async {
+    return await widget.auth.currentUser();
+  }
+
   Drawer buildDrawer(BuildContext context) {
     return Drawer(
       child: Column(
@@ -68,11 +87,10 @@ class _HomeState extends State<Home> {
                 //TODO:: Update to user account, email, and picture based on firebase auth / email.
                 new UserAccountsDrawerHeader(
                   currentAccountPicture: new CircleAvatar(
-                    backgroundColor: Colors.lightBlueAccent,
-                    child: Image.asset("images/useraccountexample.jpg")
-                  ),
+                      backgroundColor: Colors.lightBlueAccent,
+                      child: Image.asset("images/useraccountexample.jpg")),
                   accountName: new Text('Jack Hosking'),
-                  accountEmail: new Text('jack@me.com'),
+                  accountEmail: new Text(_email),
                   otherAccountsPictures: <Widget>[
                     FlatButton(
                         child: new Icon(
@@ -89,7 +107,8 @@ class _HomeState extends State<Home> {
                           color: Colors.lightBlueAccent,
                         ),
                         onPressed: () {
-                            LaunchReview.launch(androidAppId: 'com.skuu.bitbuddy');
+                          LaunchReview.launch(
+                              androidAppId: 'com.skuu.bitbuddy');
                         }),
                     FlatButton(
                         child: new Icon(
