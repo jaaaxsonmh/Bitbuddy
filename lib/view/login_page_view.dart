@@ -50,6 +50,14 @@ class LoginPageState extends State<LoginPageView> {
     }
   }
 
+  void googleSignIn() async{
+    try {
+//      widget.auth.signInWithGoogle();
+    } catch (e) {
+      print(e);
+    }
+  }
+
   void goToRegister() {
     formKey.currentState.reset();
     setState(() {
@@ -68,7 +76,7 @@ class LoginPageState extends State<LoginPageView> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor:  Colors.transparent,
+        backgroundColor: Colors.transparent,
         elevation: 0.0,
       ),
       body: new Container(
@@ -82,7 +90,9 @@ class LoginPageState extends State<LoginPageView> {
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
                   child: new Text(
-                    _formType == FormType.login ? "Login to Bit Buddy" : "Register for Bit Buddy",
+                    _formType == FormType.login
+                        ? "Login to Bit Buddy"
+                        : "Register for Bit Buddy",
                     style: new TextStyle(fontSize: 32.0),
                   ),
                 )
@@ -94,15 +104,23 @@ class LoginPageState extends State<LoginPageView> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                     child: inputFields(),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: submitButtons(),
-                  )
+
                 ],
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+              child: new Container(
+                  alignment: Alignment.center,
+                  child: submitButtons()),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+              child: new Container(
+                  child: switchStates()),
             ),
           ],
         ),
@@ -120,25 +138,60 @@ class LoginPageState extends State<LoginPageView> {
           validator: (value) => value.isEmpty ? 'Email can\'t be empty' : null,
           onSaved: (value) => _email = value,
         ),
+
         new TextFormField(
           decoration: new InputDecoration(labelText: "Enter Password here"),
           obscureText: true,
-          validator: (value) => value.isEmpty ? 'Password can\'t be empty' : value.length < 8 ? "Password can\'t be less than 8 characters" : null,
+          validator: (value) => value.isEmpty
+              ? 'Password can\'t be empty'
+              : value.length < 8
+                  ? "Password can\'t be less than 8 characters"
+                  : null,
           onSaved: (value) => _password = value,
         )
-      ] ,
+      ],
+    );
+  }
+
+  Widget loginWithGoogle() {
+    return new Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: <Widget>[
+        new FlatButton(
+            onPressed: googleSignIn,
+            child: new Image(image: new AssetImage("images/google.png"))),
+      ],
+    );
+  }
+
+  Widget switchStates() {
+    String secondaryButton;
+
+    if (_formType == FormType.login) {
+      secondaryButton = 'Don\'t have an account? Register';
+    } else {
+      secondaryButton = 'Already have an account? Login';
+    }
+
+    return new Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        new FlatButton(
+            onPressed: _formType == FormType.login ? goToRegister : goToLogin,
+            child: new Text(secondaryButton,
+                style: new TextStyle(
+                    fontSize: 18.0, color: Colors.lightBlueAccent))),
+      ],
     );
   }
 
   Widget submitButtons() {
     String primaryButton;
-    String secondaryButton;
-    if(_formType == FormType.login) {
+
+    if (_formType == FormType.login) {
       primaryButton = 'Login';
-      secondaryButton = 'Don\'t have an account? Register';
     } else {
       primaryButton = 'Register';
-      secondaryButton = 'Have an account? Login';
     }
 
     return new Column(
@@ -149,10 +202,6 @@ class LoginPageState extends State<LoginPageView> {
             child: new Text(primaryButton,
                 style: new TextStyle(fontSize: 20.0, color: Colors.white)),
             onPressed: submit),
-        new FlatButton(
-            onPressed: _formType == FormType.login ? goToRegister : goToLogin,
-            child: new Text(secondaryButton,
-                style: new TextStyle(fontSize: 20.0, color: AppTheme.lightBlue)))
       ],
     );
   }
