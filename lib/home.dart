@@ -38,11 +38,11 @@ class _HomeState extends State<Home> {
       drawer: buildDrawer(context),
       appBar: buildAppBar(context, _currentIndex),
       body: _children[_currentIndex],
-      bottomNavigationBar: buildBottomNavigationBar(),
+      bottomNavigationBar: buildBottomNavigationBar,
     );
   }
 
-  BottomNavigationBar buildBottomNavigationBar() {
+  BottomNavigationBar get buildBottomNavigationBar {
     return BottomNavigationBar(
       onTap: onTabTapped,
       currentIndex: _currentIndex,
