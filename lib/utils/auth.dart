@@ -21,7 +21,6 @@ class Auth implements BaseAuth {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   FirebaseUser _user;
 
-
   // sign in
   Future<String> signInWitEmailAndPassword(
       String email, String password) async {
@@ -38,12 +37,12 @@ class Auth implements BaseAuth {
     return _user.uid;
   }
 
-  Future<String> currentEmail() async {
-    return _user.email;
-  }
-
   Future<void> signOut() async {
     await firebaseAuth.signOut();
+  }
+
+  Future<String> currentEmail() async {
+    return _user.email;
   }
 
   @override
