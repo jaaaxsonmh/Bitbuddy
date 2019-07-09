@@ -25,10 +25,6 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-   _getEmail();
-  }
-
-  _getEmail() {
     getEmailFromAuth().then((val) => setState(() {
       _email = val;
       print("here" + _email);
