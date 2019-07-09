@@ -70,7 +70,7 @@ class _RootState extends State<Root> {
   }
 
   _getCurrentState() async {
-    var uid = await widget.auth.currentUser();
+    var uid = await widget.auth.currentEmail();
 
     SharedPreferences preferences = await SharedPreferences.getInstance();
     var introCardsViewed = preferences.getBool(LocalDB.isIntro) ?? false;

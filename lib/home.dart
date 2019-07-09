@@ -1,4 +1,3 @@
-import 'package:bitbuddy/utils/MyNavigator.dart';
 import 'package:flutter/material.dart';
 import 'package:bitbuddy/view/currency_list_view.dart';
 import 'package:bitbuddy/view/news_list_view.dart';
@@ -74,7 +73,7 @@ class _HomeState extends State<Home> {
   }
 
   Future<String> getEmailFromAuth() async {
-    return await widget.auth.currentUser();
+    return await widget.auth.currentEmail();
   }
 
   Drawer buildDrawer(BuildContext context) {

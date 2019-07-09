@@ -4,55 +4,55 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class BaseAuth {
   Future<String> signInWitEmailAndPassword(String email, String password);
+
   Future<String> createUserWithEmailAndPassword(String email, String password);
-  Future<String> currentUser();
+
+  Future<String> currentEmail();
+
+  Future<String> currentURL();
+
+  Future<String> currentDisplayName();
+
   Future<void> signOut();
 }
 
 class Auth implements BaseAuth {
 //  final GoogleSignIn googleSignIn = GoogleSignIn();
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  FirebaseUser _user;
+
+
   // sign in
-  Future<String> signInWitEmailAndPassword(String email, String password) async{
-    FirebaseUser user = await firebaseAuth
-        .signInWithEmailAndPassword(email: email, password: password);
-    return user.uid;
+  Future<String> signInWitEmailAndPassword(
+      String email, String password) async {
+    _user = await firebaseAuth.signInWithEmailAndPassword(
+        email: email, password: password);
+    return _user.uid;
   }
 
   // create user
-  Future<String> createUserWithEmailAndPassword(String email, String password) async {
-    FirebaseUser user = await firebaseAuth
-        .createUserWithEmailAndPassword(email: email, password: password);
-    return user.uid;
+  Future<String> createUserWithEmailAndPassword(
+      String email, String password) async {
+    _user = await firebaseAuth.createUserWithEmailAndPassword(
+        email: email, password: password);
+    return _user.uid;
   }
 
-  // async'ly get current user or null if there is none
-  Future<String> currentUser() async {
-    FirebaseUser user = await firebaseAuth.currentUser();
-    return user.email;
+  Future<String> currentEmail() async {
+    return _user.email;
   }
 
   Future<void> signOut() async {
     await firebaseAuth.signOut();
   }
 
-//  @override
-//  Future<String> signInWithGoogle() async {
-//    final GoogleSignInAccount googleUser = await googleSignIn.signIn();
-//    final GoogleSignInAuthentication googleAuth =
-//    await googleUser.authentication;
-//
-//    final FirebaseUser user = await firebaseAuth.signInWithGoogle(idToken: googleAuth.idToken, accessToken: googleAuth.accessToken);
-//    assert(user.email != null);
-//    assert(user.displayName != null);
-//    assert(!user.isAnonymous);
-//    assert(await user.getIdToken() != null);
-//
-//    final FirebaseUser currentUser = await firebaseAuth.currentUser();
-//    assert(user.uid == currentUser.uid);
-//
-//    return user.uid;
-//  }
+  @override
+  Future<String> currentDisplayName() async {
+    return _user.displayName;
+  }
 
+  @override
+  Future<String> currentURL() async {
+    return _user.photoUrl;
+  }
 }
-
