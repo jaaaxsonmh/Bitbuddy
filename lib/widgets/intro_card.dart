@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bitbuddy/widgets/StackedIcon.dart';
+import 'package:bitbuddy/widgets/stacked_icon.dart';
 
 class IntroCard extends StatefulWidget {
   final icon, title, color, body;

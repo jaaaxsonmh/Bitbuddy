@@ -3,7 +3,7 @@ import 'package:bitbuddy/splash_screen.dart';
 import 'package:bitbuddy/home.dart';
 import 'package:bitbuddy/utils/auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:bitbuddy/utils/LocalDB.dart';
+import 'package:bitbuddy/utils/database.dart';
 import 'package:bitbuddy/view/login_page_view.dart';
 import 'package:bitbuddy/view/intro_cards_view.dart';
 
@@ -73,7 +73,7 @@ class _RootState extends State<Root> {
     var uid = await widget.auth.currentEmail();
 
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    var introCardsViewed = preferences.getBool(LocalDB.isIntro) ?? false;
+    var introCardsViewed = preferences.getBool(Database.isIntro) ?? false;
 
     if(uid == null) {
       _afterIntro = RootStatus.notSignedIn;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bitbuddy/data/crypto_data.dart';
 import 'package:bitbuddy/modules/crypto_currency_presenter.dart';
-import 'package:bitbuddy/utils/MyNavigator.dart';
+import 'package:bitbuddy/utils/navigator.dart';
 import 'package:bitbuddy/widgets/price_formated.dart';
 
 class CurrencyListView extends StatefulWidget {

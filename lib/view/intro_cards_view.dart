@@ -1,9 +1,9 @@
-import 'package:bitbuddy/utils/AppTheme.dart';
+import 'package:bitbuddy/utils/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:bitbuddy/utils/LocalDB.dart';
-import 'package:bitbuddy/utils/IntroStrings.dart';
+import 'package:bitbuddy/utils/database.dart';
+import 'package:bitbuddy/utils/intro_strings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:bitbuddy/widgets/IntroCard.dart';
+import 'package:bitbuddy/widgets/intro_card.dart';
 
 class IntroCardView extends StatefulWidget {
   IntroCardView({this.onIntroOver});
@@ -34,7 +34,7 @@ class IntroCardViewState extends State<IntroCardView> {
 
   _setViewed() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    await sharedPreferences.setBool(LocalDB.isIntro, true);
+    await sharedPreferences.setBool(Database.isIntro, true);
   }
 
   @override

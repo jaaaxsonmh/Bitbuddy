@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bitbuddy/utils/auth.dart';
-import 'package:bitbuddy/utils/AppTheme.dart';
-import 'package:bitbuddy/widgets/StackedIcon.dart';
+import 'package:bitbuddy/utils/app_theme.dart';
+import 'package:bitbuddy/widgets/stacked_icon.dart';
 
 class LoginPageView extends StatefulWidget {
   LoginPageView({this.auth, this.onSignedIn});

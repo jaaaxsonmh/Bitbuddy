@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:bitbuddy/utils/MyNavigator.dart';
+import 'package:bitbuddy/utils/navigator.dart';
 
 class SplashScreen extends StatefulWidget {
   SplashScreen({this.onSplashOver});
